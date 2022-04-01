@@ -1,0 +1,28 @@
+SELECT DISTINCT Students.sname
+FROM Students, Courses, Registration
+WHERE Students.sid = Registration.sid AND 
+	Courses.cid = Registration.cid AND
+	Courses.cid = 107 AND
+	Registration.id > 0.9;
+
+
+SELECT COUNT( DISTINCT passedCids.sid)
+FROM (	SELECT sid, COUNT(cid) AS cidCounter
+	FROM Students, Courses, Regitration
+	WHERE Students.sid = Registration.sid AND 
+		Courses.cid = Registration.cid AND
+		Registration.percent >= 0.75
+	GROUP BY sid) AS passedCids,
+     (	SELECT sid, COUNT(cid) AS cidCounter
+	FROM Students, Courses, Regitration
+	WHERE Students.sid = Registration.sid AND 
+		Courses.cid = Registration.cid
+	GROUP BY sid) AS allCids
+WHERE passedCids.cidCounter = allCids.cidCounter;
+
+
+SELECT sid
+FROM Students, Registration
+WHERE Srudents.sid = Registration.sid
+GROUP BY sid
+HAVING COUNT(cid) <= 2;

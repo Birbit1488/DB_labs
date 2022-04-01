@@ -1,0 +1,15 @@
+SELECT Author.first_name, Author.last_name, Author.author_id,
+	Book.book_title, Book.month, Book.year, Book.book_id
+FROM Author
+INNER JOINT Book ON Author.author_id = Book.editor;
+
+
+SELECT Author.first_name, Author.last_name
+FROM Author
+WHERE Author.id NOT IN (SELECT Author.author_id
+			FROM Author, Book
+			WHERE Author.author_id = Book.editor);
+
+SELECT DISTINCT author_id
+FROM Author
+WHERE author_id NOT IN (SELECT DISTINCT editor FROM Book);
