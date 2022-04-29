@@ -1,0 +1,16 @@
+Initial total costs:
+
+>> 38616.78
+>> 38616.78
+>> 38616.78
+>> 38616.78
+
+
+
+
+Total costs after indeses' initialization:
+
+>> 8.04
+>> 8.04
+>> 42.77
+>> 8.04
